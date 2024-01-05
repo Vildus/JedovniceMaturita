@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "SPŠ Maturita",
-  description: "Poznáky k maturitě na SPŠ Jedovnice",
+  description: "Poznámky k maturitě na SPŠ Jedovnice",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/spslogo.svg',
