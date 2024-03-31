@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: Do toho !
-      link: /ops
+      link: /soucastky
     - theme: alt
       text: Nefunkční tlačítko (Jako výuka na SPŠ)
       link: /api-examples
