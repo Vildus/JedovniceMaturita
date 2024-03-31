@@ -1,170 +1,104 @@
-# Správa procesů
+# Operační systémy
 
-**Program** - zápis algoritmu v nějakém programovacím jazyce, je statický, neměnný 
+## Definice pojmů
+**Výpočetní systém** - Soubor vzájemně propojených fyzických a logických prostředků určených k provádění výpočetních operací.
 
-**Proces** – je běžící program je tvořen neměnným kódem, proměnnými 
+**Holý počítač** - výpočetní systém s pouze nejzákladnějším programovým vybavením (BIOS)
 
-Pro běh procesu jsou nutné následující zdroje systému:
-* Procesor
-* Vnitřní paměť
-* Další prostředky (I/O zařízení soubory apod.)
+**Instrukce** - nejkratší, již dále nedělitelný povel
 
-### Proces může vzniknout:
-* Z binárního spustitelného souboru – tento soubor nazýváme obrazem procesu
-* Z textového spustitelného souboru – obrazem je jeho interpretační program (např. script v Pythonu nebo .bat)
+**Operační systém** - Základní programové vybavení počítače. Program, který spravuje a řídí hardware počítače a poskytuje uživatelské rozhraní pro interakci s počítačem
+- Je načten při spuštění počítače
+- Je složen z řady programů, které koordinují hardware a aplikační programy
 
-Životní cyklus procesu je možno charakterizovat pomocí přechodů mezi stavy procesu 
+**Paměťový prostor** - je souhrn všech pamťových možností procesu, tedy jemu přidělená operační paměť pro programový kód a data procesu
 
-### Stavy procesu: 
-* Nový - proces byl vytvořen, jsou nim přidělovány prostředky
-* Běžící - proces má přidělen procesor, jeho kód je vykonáván
-* Připravený - čeká na přidělení procesoru
-* Čekající - čeká na přistup k I/0 zařízení, nebo čeká na událost - stisk klávesy 
-* Ukončený - proces byl ukončen 
+**Adresový prostor** - je pamět’ový prostor ve vnitřní paměti, který je vyhrazen tomuto procesu. Je to pamět’ový prostor procesu, na kterém jsou zavedeny adresy
 
-![Stavový diagram](https://s3.hedgedoc.org/demo/uploads/8b2da1d0-4222-4a5e-86b7-61e1eb064cd1.png)
+## Fyzické prostředky výpočetního systému 
+Hardware, tedy fyzické komponenty, jako procesory, paměťová zařízení, periferie, atd.
+- **procesor** - vykonává zadání instrukce
+- **vnitřní pamět’** - (operační pamět’ - RAM)
+- **vnější pamět’** - slouží k uložení dat a programů , které zrovna nejsou zpracovávány. Je určena na trvalé ukládání souborů
+- **vstupně-výstupní** - systém (I/O, I/O systém, periferní zařízení)
 
+## Logické prostředky výpočetního systému 
+Software, soubor programů, datových struktur a pravidel pro manipulaci s daty a hardwarem
+- **uživatel** – každý, do zadává zakázkuvýpočetnímu systému
+- **úloha (job)** – posloupnost činností potřebných ke splnění zakázky
+- **krok úlohy** – část úlohy
+- **proces** – úloha běžící pod správou operačního systému
 
-### Proces je vytvořen:
-* příkazem uživatele 
-* na žádost OS 
-* na žádost jiného procesu
+## Funkce operačního systému
+   * **Správa paměti -** Kontroluje přístup k paměti a optimalizuje její využití pro běžící programy.
+   * **[Správa procesů](/procesy) -** Koordinuje a řídí běh procesů na počítači, zajišťuje efektivní využití procesoru.
+       * **Multitasking** (více úloh, běžících současně)
+            * Kooperativní
+                * Starší
+                * OS dá programu k dispozici procesor na potřebnou dobu, když jej program nepotřebuje, vrátí jej systému
+            * Preemptivní
+                * Novější
+                * OS přiděluje a odebírá procesor jednotlivým programům na určitou dobu
+   * **Správa periférií -** Řídí komunikaci mezi počítačem a externími zařízeními (periferiemi), jako jsou tiskárny nebo skenery. (ovladače)
+   * **Správa souborů -** Organizuje a zajišťuje přístup k souborům na úložištích, spravuje jejich vytváření, čtení, zápis a mazání. Využívá souborových systémů, jako je např. FAT32, NTFS, či ext4
+   * **Správa uživatelů -** Zodpovídá za vytváření a správu uživatelských účtů, včetně řízení přístupových práv
+   * **Uživatelské rozhraní -** Poskytuje prostředky pro interakci mezi uživatelem a počítačem, může být textové nebo grafické
+   * **Programové rozhraní -** Definuje způsob, jakým mohou aplikace komunikovat s operačním systémem, poskytuje soubor funkcí a procedur pro programátory
+## Rozdělení operačních systémů
 
-### Proces je ukončen:
-* násilně
-    *  vyrušením časového limit
-    *  provedením chybné instrukce
-    *  uživatelem
-* normálně
-    *  proces byl celý proveden
+### Podle počtu ovládaných procesorů
+- **Jednoprocesorové systémy** - Operační systémy určené pro počítače s jedním procesorem
+- **Multiprocesorové systémy** - Operační systémy schopné efektivně využívat více procesorů najednou
 
-### Klasifikace operačních systémů z hlediska stupně paralelnosti práce
-* Jednouživatelské jednoúlohové - s podporou operačního systému se zpracovává pouze jeden proces a to trvale.
-* Jednouživatelské víceúlohové - jeden uživatel má současně spuštěno více aplikací (např. na pozadi probíhá náročný výpočet, hraje hudba, probíhá komunikace po Internetu a současně s tím uživatel edituje dokument).
-* Víceuživatelské víceúlohové - více uživatelů sdílí tytéž prostředky. Někdy se Označují jako operační systémy se sdílením času. 
-* Systémy s reálným časem (RTOS) - je to vlastně varianta předchozích dvou typů určená pro řízení technologických procesů.
+### Podle schopnosti správy uživatelů
+- **Jednouživatelské systémy** - Systém může používat pouze jede uživatel zároveň
+- **Víceuživatelské systémy** - Podporují současný běh více uživatelů s oddělenými účty
 
-### Základní členění operačních systémů z hlediska počtu pracujících uživatelů a počtu paralelně pracujících úloh (procesů)
+### Podle počtu provozovaných programů (multitasking)
+- **Jednoúlohové systémy** - Běží na něm pouze jeden program najednou
+- **Multitaskingové systémy** - Schopny provozovat více programů současně, rozdělují čas procesoru mezi ně (podporuje multitasking)
 
-| Systém          | Jednouživatelský     | Víceuživatelský      |
-| --------        | --------             | --------             |
-| Jednoúlohový    | MS-DOS               | Nepoužívá se lmao    |
-| Víceúlohový     | Windows              | Unix, Windows Server |
+### Podle Míry specializace
+- **Obecné operační systémy** - Navrženy pro širokou škálu aplikací (Windows, Linux)
+- **Specializované operační systémy** - Přizpůsobeny konkrétním účelům, např. pro vestavěné systémy nebo superpočítače (Specifické Linuxové distribude, různé druhy RTOS)
 
+## Realtimový operační systém (RTOS)
+Speciální typ OS, kde je kladen důraz na rychlou a předvídatelnou reakci na události. Oproti běžným OS má zaručené maximální časy odezvy. Jeho velikost je většinou do 1 MB. Jsou velmi minimální.
 
-### Datové struktury související s procesy 
+Používaný v průmyslu, robotice, kritických zabudovaných systémech, přístroje ve vesmíru, v letadlech, atd.
 
-* Správce procesů vede tabulku procesů. Záznam v této tabulce o konkrétním procesu nazýváme Proces Control Block (PCB)
-    * Je to souhrn všech dat, která OS potřebuje k řízení procesu. 
-* PID (indentifikační číslo procesu) 
-* Stav procesu 
-* **Programový čítač** - určuje, která instrukce se právě provádí (nebo má být provedena) 
-* Ukazatel do front, ve kterých proces čeká 
-* Informace pro správce paměti (tabulky obsazení paměti, evidence stránek, segmentů procesu) 
-* Informace týkající se přidělovaní procesoru 
+FreeRTOS, VxWorks, atd.
 
+## Distribuovaný systém
+Systém rozdělený mezi více propojenýmch počítačů, kteřé spolupracují na společném úkolu
 
-### Priority procesů 
+### Granualita
+   * **Hrubá granularita** - Distribuovaný systém je rozdělen do malého počtu počítačů/uzlů
+   * **Jemná granularita** - Distribuovaný systém je rozdělen do velkého počtu počítačů/uzlů
 
-* Každý proces má přiřazenou prioritu
-* Používá se zejména při plánování přidělování procesoru 
+### Distribuovaný operační systém
+Operační systém, který spravuje distribuovaný systém. Je rozdělen do několikati uzlů (počítaču). Používaný v datacentrech
 
-Priorita se rozlišuje:
-* základní/statická - je přiřazena při spuštění programu a za běhu se obvykle nemění
-* dynamická - mění se při běhu programu
+#### Vlastinosti
+   * **Transparentnost** - Skrývání detailů o distribuovaném prostředí před uživatelem nebo aplikacemi. Systém se jeví jako jeden celek
+   * **Flexibilita** - Schopnost přizpůsobit se různým prostředím. *např. výpadek uzlu*
+   * **Rozšiřitelnost** - Možnost přidání dalších počítačů do distribuovaného systému
 
-### Běh procesů a multitasking
+## Různé typy operačnich systémů
+**Monolitický systém** - Jednotný program, kde všechny funkce jsou v jednom bloku kódu
 
-Procesy mohou běžet několika způsoby:
-* Sekvenčne - dolší proces se spustí až po ukončení předchozího
-* Sekvenčne paralelně - Je spuštěno více procesů, které se délí o čas procesoru (v časových intervalech se přepínají) -> (preemptivní) multitasking
-* Paralelně - Procesy běží současně na jiných procesorech/jádrech/vláknech -> multiprocesorový a multitask systém
+**Vrstvený (hierarchický) systém** - Rozdělení funkcí na vrstvy pro lepší správu
+* Nejběžnější u moderních operačních systémů
+* Každá vrstva využívá služeb nižších vrstev
+* Vrstva jádra (Kernelspace)
+* Vrstva uživatelská (Userspace)
 
-### Kontext procesu
+![Stavový diagram](/LayerdOS.svg)
 
-Souhrn běhových informacích o procesu
+**Virtuální stroje** - umožňuje běh programů v izolovaném prostředí, známém jako virtuální stroj. Virtuální stroj poskytuje abstrakci nad fyzickým hardwarem a umožňuje spouštění různých operačních systémů nezávisle na hostitelském systému
 
-* Slouží k obnovení předchozího procesu
-* proces musí být obnoven v přesně definovaném stavu (tak, jak byl přerušen)
+**Abstraktní stroje** - systém je rozdělen do modulů, kde každý dělá jen jednu věc a nic jiného ji nedělá (např. modul pro přístup k tiskárně)
 
-**Přepínaní kontextu** - dochází k němu při střídáním procesů na jednom procesoru
+**Modulární struktura** - Systém rozdělený na samostatné moduly
 
-### Multitasking
-
-**Kooperativní multitasking** - Procesy se na multitasking aktivne podílí. Jeden proces aktivně běží a ostatní čekají. Aktivní proces si sám určí, kdy je čas přepnout na jiný proces
-**Preemptivní multitaking** - Procesy se přepínají v pravidelných intervalech. Používá se dnes v současných operačních systémech.
-
-Proces je přerušen
-* po uplynutí určitého časového intervalu
-* při přerušení vygenerovanou událostí
-* je-li skončen před koncem intervalu
-* tuto metodu používají všechny moderní OS Windows od verze win 95, win NT, Linux, MacOS
-* kontext musí být rozsáhlejší než u kooperativního multitaskingu
-
-### Multithreading
-
-Paralení zprostředkovaní uvnitř jedoho procesu
-* Proces se skládá z několika "vláken" (threadů), které běží zdánlivě souběžně
-* Jedno vlákno je vždy hlavní - to, které se vytvořilo spuštěním procesu (ostatní vlákna jsou vytvořena za běhu)
-* Vlákno má: 
-    * svůj kód
-    * ukazatel do něj (programový počítač - instrukce, která právě běží/běžela)
-    * TID (Thread ID)
-    * čas procesoru
-    * kontext (pamět/proměnné)
-* Vlákna zpravidla mají společný paměťový prostor -> není proto nutná ochrana paměťového prostoru
-
-### Fronty
-
-Správa front procesů
-* fronty jsou tvořeny procesy, které čekají na přidělení procesoru
-
-Správce front
-* vytváří a ruší fronty
-* přidává a odebírá procesy z fronty
-
-Druhy front procesů
-* bežná fronta (firts-in first-out)
-* prioritní fronta – jsou zohledňovány priority procesů
-* fronty typu delta-list - procesy čekají na uplynutí určitého časového okamžiku
-
-### Přidělování procesu
-
-* plánování procesu (CPU Scheduling)
-    * používá fronty připravených procesů
-    * určuje, který proces právě běží a na jak douho
-* dispatcher
-    * vlastní přidělení procesu, přepnutí kontextu
-    * při přepnutí procesu se uloží kontext právě běžícího procesu, načte se kontext nového procesu a spustí ho od bodu, kde byl naposledy přerušen
-
-### Přidělování procesoru
-* časovým kontextem – doba, na kterou je přidělen procesor (desítky až stovky ms)
-* procesy dělíme na:
-    * CPU-bound - procesy které hodně využívají procesor (např. Výpočetní úlohy)
-    * I/O-bound - interaktivní procesy které více využívají vstupně/výstupní zařízení
-    * realtimové procesy
-
-### Metody plánování procesoru
-
-* Fronta (FCFS) - First Come First Served – fronta procesů je organizovaná jako klasická FIFO struktura
-    * Je to nepreemptivní metoda -> procesy využívají procesor jak dlouho potřebují, nebo do vygenerovaného přerušení
-    * CPU procesy si vyžadují větší čas procesoru a I/O procesy jsou znevýhodněny
-    * Používá se v kombinaci s prioritami
-* Cyklické plánování RR (round robin)
-    * používá též frontu FIFO
-    * proces může běžet na procesoru po určitou stejnou dobu (časové kvantum) -> je to preemptivní proces
-    * opět jsou zvýhodněny CPU procesy, protože předbíhají I/O procesy, čekající ve frontě na přidělení zařízení
-* Priority
-    * Procesor přidělujeme procesu s nejvyšší prioritou
-    * Priorita 
-        * statická - je stanovená předem 
-        * dynamická - mění se při běhu procesu
-    * Dynamícká priorita snižuje riziku stárnutí procesů -> u déle čekajících procesů je zvyšována
-* Nejkratší vlákna SPN (Shortest process next)
-    * procesor je přednostě přidělen tomu procesu, u kterého se přepokládá nejkratší doba jeho využívání
-* Kombinace metod s více frontami
-    * je vedeno více front procesů
-    * procesy jsou zařazovány do front podle parametrů (priorita)
-    * každá fronta má stanovenou metodu plánování
-    * jedna z metod je použita při rozhodoání mezi frontami
-
+**Model klient-server** - Rozdělení úloh mezi klienta (uživatele) a server (poskytovatele služby)

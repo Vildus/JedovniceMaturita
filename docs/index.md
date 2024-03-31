@@ -29,7 +29,7 @@ features:
   - title: Markdown
     icon:
       src: /markdown.svg
-    details: Všechny poznámky jsou ve formátu Markdown. Mužete si je zkopírovat do vašeho oblíbeného poznákového softwaru (např. Obsidian)
+    details: Všechny poznámky jsou ve formátu Markdown a tím jsou přenosné do jiných programů
 ---
 
 <style>
