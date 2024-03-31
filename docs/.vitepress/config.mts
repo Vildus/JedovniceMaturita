@@ -49,6 +49,10 @@ export default defineConfig({
 
     search: {
       provider: 'local'
+    },
+    footer: {
+      message: 'Vydáno pod MIT Licencí.',
+      copyright: 'Copyright © 2024 Vilém Pořízka'
     }
   },
   cleanUrls: true
