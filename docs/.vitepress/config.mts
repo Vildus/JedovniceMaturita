@@ -51,7 +51,7 @@ export default defineConfig({
       provider: 'local'
     },
     footer: {
-      message: 'Vydáno pod MIT Licencí.',
+      message: 'Vydáno pod MIT Licencí',
       copyright: 'Copyright © 2024 Vilém Pořízka'
     }
   },
