@@ -13,7 +13,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'ELN', link: '/soucastky' },
-      { text: 'EPO', link: '/vnejsiPameti' },
+      { text: 'EPO', link: '/struktura' },
       { text: 'OPS', link: '/ops' }
     ],
 
@@ -27,6 +27,7 @@ export default defineConfig({
       {
         text: 'EPO',
         items: [
+          { text: 'Struktura počítače a prosecory', link: '/struktura'},
           { text: 'Vnější paměti', link: '/vnejsiPameti'}
         ]
       },

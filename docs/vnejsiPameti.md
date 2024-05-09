@@ -20,10 +20,16 @@ Obdélníkové kartóny. Do kterých se vyrazily díry (zápis dat). Četlo se z
 
 Magnetické paměti používají magnetizaci magnetického materiálu pro ukládání dat. Data jsou zapisovány a čteny magnetickou hlavou
 
-### Diskety (klasicky 1.44 MB)
+### Diskety
 
 Diskety jsou staré přenosné paměťové média. Je zapotřebí speciální mechaniky. Používalo
 se pro přenos dat mezi počítači. Distribuoval se na nich sofware.
+
+Diskety existovali v několika velikostech a kapacitách. Ty nejznámější diskety jsou o průměru 5¼ palce a o kapacitě 1.44 MB
+
+Plastový obal diskety obsahuje disk z magnetického (a jak vyplývá z anglického naźvu "floppy didk", ohebného) materiálu. Tento disk je upevněn na ose, se kterou točí motor disketové mechaniky. Z disket se čtou a zapisují data pomocí magnetické hlavy, podobně jaku u [HDD](#hdd).
+
+Diskety jsou oproti některým jiným vnějším pamětím snadno přenosné. Dnes je nahradily primárně USB Flash disky. I přesto je dodnes ikona diskety používání jako univerzální značka ukládání dat.
 
 ### HDD
 
