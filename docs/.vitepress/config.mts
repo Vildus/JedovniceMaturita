@@ -14,7 +14,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'ELN', link: '/soucastky' },
       { text: 'EPO', link: '/struktura' },
-      { text: 'OPS', link: '/ops' }
+      { text: 'NEGR', link: '/ops' }
     ],
 
     sidebar: [
