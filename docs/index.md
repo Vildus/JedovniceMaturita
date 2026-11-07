@@ -20,7 +20,7 @@ hero:
 features:
   - title: Veřejné
     icon:
-      src: /commie.svg
+      src: /antenna.svg
     details: Pro všechny ke čtení online zdarma
   - title: Open Source
     icon:
